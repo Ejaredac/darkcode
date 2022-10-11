@@ -100,3 +100,37 @@ C:\Users\ejare\OneDrive\Uni Tecnologico\Septimo Semestre\Lenguajes y Automatas I
 C:\Users\ejare\OneDrive\Uni Tecnologico\Septimo Semestre\Lenguajes y Automatas II\Programa\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.csproj.CopyComplete
 C:\Users\ejare\OneDrive\Uni Tecnologico\Septimo Semestre\Lenguajes y Automatas II\Programa\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.exe
 C:\Users\ejare\OneDrive\Uni Tecnologico\Septimo Semestre\Lenguajes y Automatas II\Programa\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.pdb
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\DARKCODE.exe.config
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\DARKCODE.exe
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\DARKCODE.pdb
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\Google.Protobuf.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\MySql.Data.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\System.Buffers.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\System.Memory.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\ZstdNet.dll
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\Google.Protobuf.pdb
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\Google.Protobuf.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\MySql.Data.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\System.Buffers.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\System.Memory.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.csproj.AssemblyReference.cache
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.csproj.SuggestedBindingRedirects.cache
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.Form1.resources
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.Properties.Resources.resources
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.csproj.GenerateResource.cache
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.csproj.CoreCompileInputs.cache
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.csproj.CopyComplete
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.exe
+C:\Users\ejare\Documents\GitHub\darkcode\Programa\DARKCODE\DARKCODE\obj\Debug\DARKCODE.pdb

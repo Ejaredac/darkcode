@@ -16,15 +16,17 @@ namespace DARKCODE
     {
         string directorioActual = @"C:\";
         string TOKENSLINEAS = "";
+        string TOKENSPARAGRAMLINEA = "";
         Conexion con = new Conexion("localhost", "darkcode", "root", "");
         DataTable miMatriz;
         DataTable miGramatica;
         List<Simbolo> Simbolos = new List<Simbolo>();
+        List<Simbolo> SimbolosAux = new List<Simbolo>();
         public Form1()
         {
             InitializeComponent();
             miMatriz = con.ObtenerTabla("SELECT * FROM matrizdetransicion");
-            miGramatica = con.ObtenerTabla("SELECT * FROM `table 2`");
+            miGramatica = con.ObtenerTabla("SELECT * FROM `19100140`.`table 2`;");
             foreach (DataColumn item in miMatriz.Columns)
             {
                 if (item.ColumnName.Length == 2)
@@ -179,6 +181,7 @@ namespace DARKCODE
 
         private void btnEvaluar_Click(object sender, EventArgs e)
         {
+            string gramaopc = "";
             string tokensGramatica = "";
             rtxtTokens.Clear();
             txtErrores.Clear();
@@ -196,8 +199,10 @@ namespace DARKCODE
                         txtErrores.Text += "[" + nTKN + "]" + MensajeError(nTKN) + " en la linea (" + i + ")";
                         txtErrores.Text += Environment.NewLine; 
                     }
-                    else if (nTKN.Equals("IINID") && rtxtTokens.Text.Split(' ')[rtxtTokens.Text.Split(' ').Length - 1].Contains("PTY"))
-                        nTKN = getSimboloTOKEN(palabra,nTKN,"");
+                    
+                    else if (nTKN.Equals("IINID"))
+                        nTKN = getSimboloTOKEN(palabra,"","");
+                    gramaopc += ((nTKN.Contains("IINID") ? "IINID" : nTKN)) + " ";
                     tokensGramatica += ((nTKN.Contains("IINID") ? nTKN : nTKN)) + " ";
                     rtxtTokens.Text += nTKN + " ";
                     ipal++;
@@ -211,6 +216,7 @@ namespace DARKCODE
             foreach (Simbolo item in Simbolos)
             {
                 dgvValores.Rows.Add(item.ID, item.Nombre,item.Tipo,item.Valor);
+
             }
             EvaluarGramatica(tokensGramatica);
         }
@@ -242,6 +248,11 @@ namespace DARKCODE
             tokens = tokens.Replace("    ", " ");
             tokens = tokens.Replace("   ", " ");
             tokens = tokens.Replace("  ", " ");
+            SimbolosAux = Simbolos;
+            foreach (Simbolo item in SimbolosAux)
+            {
+                tokens = tokens.Replace("IINID" + item.Valor.ToString(), "IINID");
+            }
             TOKENSLINEAS = tokens;
             tokens = tokens.Replace(Environment.NewLine, "");
             string nToken = "";
@@ -252,12 +263,12 @@ namespace DARKCODE
                 tokens = RevGram(tokens);
             } while (nToken != tokens);
 
-            if (tokens != "S ")
+            if (!tokens.Contains("S "))
             {
                 BuscarError();
                 tokens = TOKENSLINEAS;
             }
-            rtxtTokens.Text = tokens;
+            txtREVERR.Text = tokens;
         }
         //Evaluacion de los identificadores y su ubicacion
         string getSimboloTOKEN(string nombre,string tipo, string valor)
@@ -503,23 +514,33 @@ namespace DARKCODE
         //Evalua cada token otenido de la matriz
         string getTOKEN(string strPalabra)
         {
+            bool iniciaCadena = false;
             string token = "";
             int row = 0;
             foreach (char c in (strPalabra + ";").ToCharArray())
             {
-                string let = c.ToString();
-                if (strPalabra.Contains(";;"))
-                    return "ER09";
-                let = (let == ";") ? "FDC" : let;
-                if (miMatriz.Columns[let] != null)
-                {
-                    row = int.Parse(miMatriz.Rows[row][let].ToString());
-                    if (miMatriz.Rows[row]["CAT"].ToString() != "")
+
+                //if (c != '"')
+                //{
+                    string let = c.ToString();
+                    if (strPalabra.Contains(";;"))
+                        return "ER09";
+                    let = (let == ";") ? "FDC" : let;
+                    if (miMatriz.Columns[let] != null)
                     {
-                        token = miMatriz.Rows[row]["CAT"].ToString();
-                        return token;
+                        row = int.Parse(miMatriz.Rows[row][let].ToString());
+                        if (miMatriz.Rows[row]["CAT"].ToString() != "")
+                        {
+                            token = miMatriz.Rows[row]["CAT"].ToString();
+                            return token;
+                        }
                     }
-                }
+                //}
+                //else
+                //{
+                //    //asvjsahjsaj
+                //}
+                
             }
             return token;
         }
@@ -544,8 +565,15 @@ namespace DARKCODE
             CargarDocumento(1);
         }
 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEvaluar_Click_1(object sender, EventArgs e)
         {
+            string gramaopc = "";
             string tokensGramatica = "";
             rtxtTokens.Clear();
             txtErrores.Clear();
@@ -556,8 +584,38 @@ namespace DARKCODE
             {
                 string linea = formato(item);
                 ipal = 0;
+                string concaten = "";
+                string strcadenavalida = "";
                 foreach (string palabra in linea.Split(' '))
                 {
+                    //string nTKN = "";
+                    //if (palabra.Length==0)
+                    //{
+                    //    strcadenavalida = palabra;
+                    //}
+                    //else if (palabra[0]=='"' && palabra[palabra.Length-1] == '"')
+                    //{
+                    //    strcadenavalida = palabra;
+                    //}
+                    //else if (palabra[0]=='"' && !(palabra[palabra.Length - 1] == '"'))
+                    //{
+                    //    strcadenavalida = "";
+                    //    concaten = concaten + palabra;
+                    //}
+                    //else if(!(palabra[0] == '"') && (palabra[palabra.Length - 1] == '"') && strcadenavalida[0]=='"')
+                    //{
+                    //    concaten = concaten + palabra;
+                    //    strcadenavalida = concaten;
+                    //} 
+                    //else if((strcadenavalida[0]) == '"' && !(palabra.Contains("\"")))
+                    //{
+                    //    concaten = concaten+palabra;
+                    //}
+                    //else
+                    //{
+                    //    strcadenavalida = palabra;
+                    //}
+                    //    nTKN = getTOKEN(strcadenavalida);
                     string nTKN = getTOKEN(palabra);
                     try
                     {
@@ -567,19 +625,23 @@ namespace DARKCODE
                             txtErrores.Text += "[" + nTKN + "]" + MensajeError(nTKN) + " en la linea (" + i + ")";
                             txtErrores.Text += Environment.NewLine;
                         }
-                        else if (nTKN.Equals("IINID") && rtxtTokens.Lines[i - 1].Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length - 2].Contains("PTY") && linea.Split(' ')[ipal + 1].Equals("="))
-                            nTKN = getSimboloTOKEN(palabra, linea.Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length - 2], linea.Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length + 1]);
-                        else if (nTKN.Equals("IINID") && linea.Split(' ')[ipal + 1].Equals("="))
-                            nTKN = getSimboloTOKEN(palabra, "", linea.Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length + 1]);
-                        else if (nTKN.Equals("IINID") && rtxtTokens.Lines[i - 1].Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length - 2].Contains("PTY"))
-                            nTKN = getSimboloTOKEN(palabra, linea.Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length - 2], "");
+                        //else if (nTKN.Equals("IINID") && rtxtTokens.Lines[i - 1].Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length - 2].Contains("PTY") && linea.Split(' ')[ipal + 1].Equals("="))
+                        //    nTKN = getSimboloTOKEN(palabra, linea.Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length - 2], linea.Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length + 1]);
+                        //else if (nTKN.Equals("IINID") && linea.Split(' ')[ipal + 1].Equals("="))
+                        //    nTKN = getSimboloTOKEN(palabra, "", linea.Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length + 1]);
+                        //else if (nTKN.Equals("IINID") && rtxtTokens.Lines[i - 1].Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length - 2].Contains("PTY"))
+                        //    nTKN = getSimboloTOKEN(palabra, linea.Split(' ')[rtxtTokens.Lines[i - 1].Split(' ').Length - 2], "");
+                        //else if (nTKN.Equals("IINID"))
+                        //    nTKN = getSimboloTOKEN(palabra, "", "");
                         else if (nTKN.Equals("IINID"))
                             nTKN = getSimboloTOKEN(palabra, "", "");
+                        
                     }
                     finally
                     {
 
                     }
+                    gramaopc += ((nTKN.Contains("IINID") ? "IINID" : nTKN)) + " ";
                     tokensGramatica += ((nTKN.Contains("IINID") ? nTKN : nTKN)) + " ";
                     rtxtTokens.Text += nTKN + " ";
                     ipal++;
@@ -594,7 +656,7 @@ namespace DARKCODE
             {
                 dgvValores.Rows.Add(item.ID, item.Nombre,item.Tipo,item.Valor);
             }
-            EvaluarGramatica(tokensGramatica);
+            EvaluarGramatica(gramaopc);
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)

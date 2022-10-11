@@ -170,12 +170,11 @@
             // 
             // txtREVERR
             // 
-            this.txtREVERR.Location = new System.Drawing.Point(80, 635);
+            this.txtREVERR.Location = new System.Drawing.Point(163, 579);
             this.txtREVERR.Margin = new System.Windows.Forms.Padding(2);
             this.txtREVERR.Name = "txtREVERR";
-            this.txtREVERR.Size = new System.Drawing.Size(76, 20);
+            this.txtREVERR.Size = new System.Drawing.Size(352, 20);
             this.txtREVERR.TabIndex = 16;
-            this.txtREVERR.Visible = false;
             // 
             // groupBox2
             // 
